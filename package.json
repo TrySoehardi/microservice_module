@@ -4,6 +4,7 @@
   "description": "this purpose for implementation depedency injection in expressJs",
   "main": "server/server.js",
   "scripts": {
+    "dev": "nodemon src/index.ts",
     "start": "node dist/index.js",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/TrySoehardi/microservice_module#readme",
   "devDependencies": {
     "@types/koa": "^2.13.11",
+    "@types/koa-logger": "^3.1.5",
     "@types/koa-router": "^7.4.7",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "eslint": "^8.53.0",
@@ -30,9 +32,12 @@
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-n": "^16.3.1",
     "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "dayjs": "^1.11.10",
     "koa": "^2.14.2",
     "koa-router": "^12.0.1"
   }

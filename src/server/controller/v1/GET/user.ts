@@ -1,11 +1,13 @@
 import { DefaultContext, DefaultState, ParameterizedContext } from "koa";
 
-export class Testing {
+export class GetUser {
 
-    public path = "GET";
+    public method = "GET";
+    public path = "/user";
+
     public async api(ctx: ParameterizedContext<DefaultContext, DefaultState>) {
         ctx.body = {
-            message : "oke testing"
+            message : "from  get user controller"
         };
     }
 

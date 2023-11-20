@@ -1,7 +1,11 @@
-// import { Testing } from "./v1/testing";
-import { UserController } from "./v1/GET/userController";
+// ~~ GET ~~ //
+import { GetUser } from "./v1/GET/user";
+
+// ~~ POST ~~ //
+import { PostUser } from "./v1/POST/user";
 
 export const controllers = [
-    new UserController(),
+    new GetUser(),
+    new PostUser(),
     // new Testing
 ];

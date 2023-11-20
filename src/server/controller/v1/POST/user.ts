@@ -1,12 +1,13 @@
 import { DefaultContext, DefaultState, ParameterizedContext } from "koa";
 
-export class UserController {
+export class PostUser {
 
-    public method = "GET";
+    public method = "POST";
     public path = "/user";
+
     public async api(ctx: ParameterizedContext<DefaultContext, DefaultState>) {
         ctx.body = {
-            message : "from user controller"
+            message : "from post user controller"
         };
     }
 

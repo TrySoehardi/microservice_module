@@ -1,5 +1,6 @@
 import koa, { DefaultContext, DefaultState } from "koa";
-// import router from "./server/router";
+import "./framework/middleware/log";
+import {logger} from "./framework/middleware/logger";
 import { Routers } from "./server/router";
 const router = new Routers;
 
@@ -9,6 +10,7 @@ const port = 3000;
 
 (async()=>{
     try {
+        await app.use(logger);
         await app.use(router.KoaRouter.routes());
         await app.listen(port);
         console.log(`server run in port ${port}`);
