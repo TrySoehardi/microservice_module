@@ -1,11 +1,11 @@
-import { DefaultContext, DefaultState, ParameterizedContext } from "koa";
+import {IRouterContext}  from "koa-router";
 
 export class GetUser {
 
     public method = "GET";
     public path = "/user";
 
-    public async api(ctx: ParameterizedContext<DefaultContext, DefaultState>) {
+    public async api(ctx: IRouterContext):Promise<void> {
         ctx.body = {
             message : "from  get user controller"
         };

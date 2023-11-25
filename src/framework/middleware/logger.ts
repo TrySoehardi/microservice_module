@@ -4,7 +4,7 @@ import { Context, Next } from "koa";
 export async function logger(ctx: Context, next: Next) {
     console.log(`REQUEST: ${ctx.method} ${ctx.path}`);
     console.log("REQ_HEADER:", ctx.header);
-    console.log("REQ_BODY:", ctx.body);
+    console.log("REQ_BODY:", ctx.request.body);
 
 
     await next();

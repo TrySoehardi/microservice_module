@@ -34,7 +34,7 @@
         "guard-for-in": "error",
         "logical-assignment-operators": ["error", "always"],
         "space-before-function-paren": ["error", "never"],
-        "no-explicit-any": 0,
+        "no-explicit-any": 0, 
         "no-mixed-spaces-and-tabs": 0
         
     }

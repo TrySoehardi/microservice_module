@@ -6,6 +6,5 @@ import { PostUser } from "./v1/POST/user";
 
 export const controllers = [
     new GetUser(),
-    new PostUser(),
-    // new Testing
+    new PostUser,
 ];
