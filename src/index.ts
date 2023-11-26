@@ -4,6 +4,7 @@ import "./framework/middleware/log";
 import {logger} from "./framework/middleware/logger";
 import { Routers } from "./server/router";
 import koaBody from "koa-body";
+import helmet from "koa-helmet";
 const router = new Routers;
 
 const app = new koa();
@@ -11,6 +12,7 @@ const port = 3000;
 console.log(process.env.ENVIRONTMENT);
 (async()=>{
     try {
+        await app.use(helmet());
         await app.use(koaBody());
         await app.use(logger);
         await app.use(router.getRouter().routes());

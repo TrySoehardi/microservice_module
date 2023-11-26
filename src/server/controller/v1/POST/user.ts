@@ -8,7 +8,7 @@ export class PostUser {
 // ~~ body validation ~~ //
     private async validation(ctx: IRouterContext) {
         const result = await Joi.object().keys({
-            userName : Joi.string()
+            userName : Joi.string().required()
         }).validate(ctx.request.body).error;
         if(result) {
             ctx.status = 500;
