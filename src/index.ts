@@ -1,34 +1,30 @@
 import "dotenv/config";
-import koa from "koa";
 import "./framework/middleware/log";
-import {logger} from "./framework/middleware/logger";
-import { Routers } from "./server/router";
-import koaBody from "koa-body";
-import helmet from "koa-helmet";
-const router = new Routers;
+import https from "https";
+import fs from "fs";
+import path from "path";
 
-const app = new koa();
-const port = 3000;
+import { App } from "./server/app";
+
+
+const port = process.env.PORT;
 console.log(process.env.ENVIRONTMENT);
 (async()=>{
-    try {
-        await app.use(helmet());
-        await app.use(koaBody());
-        await app.use(logger);
-        await app.use(router.getRouter().routes());
-        await app.listen(port);
-        console.log(`server run in port ${port}`);
-    } catch(error) {
+      try {
+        const app = new App();
+        const certFileName = process.env.CERT_FILE || "bang.pem";
+        const keyFileName = process.env.KEY_FILE || "bang.pem";
+          https.createServer(
+            {
+                key :  fs.readFileSync(path.resolve(__dirname,"../",keyFileName)),
+                cert : fs.readFileSync(path.resolve(__dirname,"../",certFileName))
+            },
+            app.getApp().callback()
+            )
+            .listen(port);
+        console.log("SERVER RUN IN PORT ",port);
+      }catch(error) {
         console.log(error);
-    }
+      }
 })();
 
-//TEST INTEGRATION
-interface Itest {
-    app?: null | typeof app
-}
-const test: Itest = {};
-if(process.env.ENVIRONMENT === "development") {
-    test.app = app;
-}
-export default test;
